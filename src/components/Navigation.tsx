@@ -2,19 +2,21 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Heart, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import MorphButton from './MorphButton';
+import ContactModal from './ContactModal';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Jobs & Skills', path: '/jobs-skills' },
-    { name: 'Mentorship', path: '/mentorship' },
+    { name: 'Mentorship Program', path: '/mentorship' },
     { name: 'Success Stories', path: '/success-stories' },
     { name: 'Resources', path: '/resources' },
-    { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -48,6 +50,12 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+            <MorphButton 
+              size="sm" 
+              onClick={() => setIsContactOpen(true)}
+            >
+              Contact Us
+            </MorphButton>
           </div>
 
           {/* Mobile menu button */}
@@ -81,10 +89,27 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              <div className="px-3 py-2">
+                <MorphButton 
+                  size="sm" 
+                  onClick={() => {
+                    setIsContactOpen(true);
+                    setIsOpen(false);
+                  }}
+                  className="w-full"
+                >
+                  Contact Us
+                </MorphButton>
+              </div>
             </div>
           </div>
         )}
       </div>
+      
+      <ContactModal 
+        isOpen={isContactOpen} 
+        onClose={() => setIsContactOpen(false)} 
+      />
     </nav>
   );
 };
