@@ -2,41 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* EmpowerHer Goa Design System - Soft pastels with gold accents */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Soft pastel background tones */
+    --background: 320 50% 98%;
+    --foreground: 340 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card colors - soft lavender */
+    --card: 310 30% 97%;
+    --card-foreground: 340 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover colors */
+    --popover: 310 30% 97%;
+    --popover-foreground: 340 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - soft rose gold */
+    --primary: 340 35% 75%;
+    --primary-foreground: 340 25% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - soft mint */
+    --secondary: 150 25% 85%;
+    --secondary-foreground: 340 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - soft pearl */
+    --muted: 320 15% 92%;
+    --muted-foreground: 340 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - warm gold */
+    --accent: 45 60% 80%;
+    --accent-foreground: 340 25% 15%;
 
+    /* Destructive stays the same */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders - soft pearl */
+    --border: 320 20% 88%;
+    --input: 320 20% 88%;
+    --ring: 340 35% 75%;
 
-    --radius: 0.5rem;
+    /* Additional empowerment colors */
+    --empowerment-pink: 330 40% 85%;
+    --empowerment-gold: 45 65% 75%;
+    --empowerment-mint: 150 30% 80%;
+    --empowerment-lavender: 280 25% 85%;
+    --empowerment-peach: 20 40% 85%;
+
+    /* Gradients for liquid motion */
+    --gradient-liquid: linear-gradient(135deg, 
+      hsl(var(--empowerment-pink)) 0%, 
+      hsl(var(--empowerment-gold)) 25%, 
+      hsl(var(--empowerment-mint)) 50%, 
+      hsl(var(--empowerment-lavender)) 75%, 
+      hsl(var(--empowerment-peach)) 100%);
+    
+    --gradient-soft: linear-gradient(120deg, 
+      hsl(var(--background)) 0%, 
+      hsl(var(--empowerment-pink)) 100%);
+
+    /* Shadows for morph buttons */
+    --shadow-morph: 0 8px 25px -8px hsl(var(--empowerment-gold) / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(var(--empowerment-pink) / 0.3);
+
+    /* Animations */
+    --transition-morph: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-liquid: transform 8s ease-in-out infinite;
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +135,23 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
   }
 }
